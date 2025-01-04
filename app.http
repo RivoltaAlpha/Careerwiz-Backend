@@ -1,0 +1,41 @@
+###
+GET  http://localhost:8000/user/2
+
+
+###
+GET  http://localhost:8000/users
+
+###
+POST  http://localhost:8000/user
+Content-Type: application/json
+
+{
+  "username": "Perky",
+  "password": "perky",
+  "email": "perkyperk@gmail.com",
+  "role": "user",
+  "image_url": "https://th.bing.com/th?id=OIP.JL2FYRdlJkZl34uduf3h5QHaHa&w=202&h=202&c=7&r=0&o=5&pid=1.7"
+}
+
+###
+POST  http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+  "username": "DLaw",
+  "password": "lawtraf",
+  "email": "Dlaw@gmail.com",
+  "role": "user",
+  "image_url": "https://th.bing.com/th?id=OIP.JL2FYRdlJkZl34uduf3h5QHaHa&w=202&h=202&c=7&r=0&o=5&pid=1.7"
+}
+
+
+###
+POST  http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+  "username": "Tiff",
+  "password": "password"
+}
+
