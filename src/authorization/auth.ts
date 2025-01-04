@@ -24,14 +24,14 @@ export const authMiddleware = async (c:Context & {req: HonoContext<any> }, next:
     console.log("Decoded:", decoded);
     if (!decoded) return c.json({ error: 'Invalid token 😏😏😏😏' }, 401);
 
-    // check roles ''
-      // Role check
+  // Role check
   const userRole = decoded.role;
-  console.log("User Role:", userRole);
-  console.log("Required Role:", requiredRole);
+  // console.log("student Role:", studentRole);
+  // console.log("Required Role:", requiredRole);
+
     // Authorization
     if (
-        (requiredRole === "both" && (userRole === "admin" || userRole === "user")) ||
+        (requiredRole === "both" && (userRole === "admin" || userRole === "student")) ||
         userRole === requiredRole
       ) 
       // authenticate all
@@ -44,4 +44,4 @@ export const authMiddleware = async (c:Context & {req: HonoContext<any> }, next:
 
 
 export const authenticateAdmin = async  (c: Context, next: Next) => await authMiddleware(c, next, "admin")
-export const authenticateUser = async  (c: Context, next: Next) => await authMiddleware(c, next, "user")
+export const authenticatestudent = async  (c: Context, next: Next) => await authMiddleware(c, next, "student")
