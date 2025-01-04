@@ -1,5 +1,42 @@
-import { pgTable } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
+import {  serial, text,varchar,pgEnum, timestamp, integer, boolean, pgTable } from "drizzle-orm/pg-core";
 
-export const userTable = pgTable("users", {
 
-})
+export const students = pgTable("students", {
+    student_id: serial("student_id").primaryKey(),
+    firstname: varchar("firstname", { length: 50 }).notNull(),
+    lastname: varchar("lastname", { length: 50 }).notNull(),
+    username: varchar("username", { length: 50 }).notNull(),
+    password: varchar("password", { length: 50 }).notNull(),
+    email: varchar("email", { length: 50 }),
+    contact: varchar("contact", { length: 50 }),
+    student_subjects: varchar("student_subjects", { length: 50 }).notNull(),
+    student_intrests: varchar("student_intrests", { length: 50 }).notNull(),
+    student_recommendations: varchar("student_recommendations"),
+    school: varchar("school", { length: 50 }).notNull(),
+    date_joined: timestamp("created_at").defaultNow().notNull(),
+    updated_at: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const careers = pgTable("careers",{
+    career_id: serial("career_id").primaryKey(),
+    career_name: varchar("message", { length: 100 }).notNull(),
+    description: text("description"),
+    requirements: varchar("message", { length: 100 }).notNull(),
+    subjects: varchar("message", { length: 100 }).notNull(),
+    interests: varchar("message", { length: 100 }).notNull(),
+});
+
+export const recommendations = pgTable("recommendations", {
+    recommendations_id: serial("recommendations_id").primaryKey(),
+    
+});
+
+export const feedback = pgTable("feedback", {
+    feedback_id: serial("feedback_id").primaryKey(),
+    name: varchar("name", { length: 50 }).notNull(),
+    email: varchar("email", { length: 50 }).notNull(),
+    message: varchar("message", { length: 1000 }).notNull(),
+});
+
+
