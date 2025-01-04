@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import {  serial, text,varchar,pgEnum, timestamp, integer, boolean, pgTable } from "drizzle-orm/pg-core";
+import {  serial, text,varchar,pgEnum, timestamp, integer, pgTable } from "drizzle-orm/pg-core";
 
 
 export const students = pgTable("students", {
@@ -14,9 +14,12 @@ export const students = pgTable("students", {
     student_intrests: varchar("student_intrests", { length: 50 }).notNull(),
     student_recommendations: varchar("student_recommendations"),
     school: varchar("school", { length: 50 }).notNull(),
+    role: varchar("role", { length: 50 }).default("student").notNull(),
     date_joined: timestamp("created_at").defaultNow().notNull(),
     updated_at: timestamp("updated_at").defaultNow().notNull(),
 });
+
+export const subject_status = pgEnum("subject_name", [''])
 
 export const careers = pgTable("careers",{
     career_id: serial("career_id").primaryKey(),
@@ -29,8 +32,14 @@ export const careers = pgTable("careers",{
 
 export const recommendations = pgTable("recommendations", {
     recommendations_id: serial("recommendations_id").primaryKey(),
-    
+    student_id: integer("students_id").references(() => students.student_id, {onDelete: "cascade"}),
+    student_recommendations: varchar("student_recommendations", {length: 1000}).references(() => students.student_recommendations, {onDelete: "cascade"}),
+
 });
+
+export const recommendationRelationships = relations(students, ({ many }) =>({
+    students: many(recommendations)
+}) )
 
 export const feedback = pgTable("feedback", {
     feedback_id: serial("feedback_id").primaryKey(),
@@ -39,4 +48,11 @@ export const feedback = pgTable("feedback", {
     message: varchar("message", { length: 1000 }).notNull(),
 });
 
-
+export type TIstudents = typeof students.$inferInsert;
+export type TSstudents = typeof students.$inferSelect;
+export type TICareers = typeof careers.$inferInsert;
+export type TSCareets = typeof careers.$inferSelect;
+export type TIRecommendations = typeof recommendations.$inferInsert;
+export type TSRecommendations = typeof recommendations.$inferSelect;
+export type TIFeedback = typeof feedback.$inferInsert;
+export type TSFeedback = typeof feedback.$inferSelect;
