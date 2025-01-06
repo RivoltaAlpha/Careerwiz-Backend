@@ -8,6 +8,13 @@ export const userSchema = z.object({
     role: z.string()
 });
 
+export const StudentSchema = z.object({
+    username: z.string(),
+    email: z.string().email(),
+    password: z.string(),
+    role: z.string()
+});
+
 export const loginUserShema = z.object({
     username: z.string(),
     password: z.string(),
