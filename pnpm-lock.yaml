@@ -11,6 +11,9 @@ importers:
       '@hono/node-server':
         specifier: ^1.13.7
         version: 1.13.7(hono@4.6.15)
+      '@hono/zod-validator':
+        specifier: ^0.4.2
+        version: 0.4.2(hono@4.6.15)(zod@3.24.1)
       '@neondatabase/serverless':
         specifier: ^0.10.4
         version: 0.10.4
@@ -32,6 +35,9 @@ importers:
       pg:
         specifier: ^8.13.1
         version: 8.13.1
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
     devDependencies:
       '@types/bcrypt':
         specifier: ^5.0.2
@@ -487,6 +493,12 @@ packages:
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
+
+  '@hono/zod-validator@0.4.2':
+    resolution: {integrity: sha512-1rrlBg+EpDPhzOV4hT9pxr5+xDVmKuz6YJl+la7VCwK6ass5ldyKm5fD+umJdV2zhHD6jROoCCv8NbTwyfhT0g==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.19.1
 
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
@@ -978,6 +990,9 @@ packages:
   yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
+  zod@3.24.1:
+    resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
+
 snapshots:
 
   '@drizzle-team/brocli@0.10.2': {}
@@ -1202,6 +1217,11 @@ snapshots:
   '@hono/node-server@1.13.7(hono@4.6.15)':
     dependencies:
       hono: 4.6.15
+
+  '@hono/zod-validator@0.4.2(hono@4.6.15)(zod@3.24.1)':
+    dependencies:
+      hono: 4.6.15
+      zod: 3.24.1
 
   '@mapbox/node-pre-gyp@1.0.11':
     dependencies:
@@ -1660,3 +1680,5 @@ snapshots:
   xtend@4.0.2: {}
 
   yallist@4.0.0: {}
+
+  zod@3.24.1: {}
