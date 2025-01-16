@@ -1,5 +1,6 @@
 import {Context} from "hono";
-import { getFeedbackById, createFeedbackService,updateFeedbackService,deleteFeedbackService,AllfeedbackService,} from "./services";
+import { getFeedbackById, createFeedbackService,updateFeedbackService,deleteFeedbackService,AllfeedbackService,getStudentFeedbackService} from "./services";
+import { error } from "console";
 
 export const listFeedback = async (c: Context) => {
     try {
@@ -73,4 +74,18 @@ export const deleteFeedback = async (c:Context) => {
     }catch(error:any){
         return c.json({ error: error?.message }, 400);
     }
-}
+};
+
+// Get student feedback
+export const getStudentFeedback = async (c:Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    try{
+        const feedback = await getStudentFeedbackService(id);
+        return c.json(feedback, 200);
+    }
+    catch(error:any){     
+        return c.json({ error: error?.message }, 400);
+    }
+};

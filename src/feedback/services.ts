@@ -12,6 +12,7 @@ export const AllfeedbackService = async ( limit?: number): Promise<TSFeedback[] 
     return await db.query.feedback.findMany();
 }
 
+// fetch specific feedback from  the database using its ID
 export async function getFeedbackById(id: number): Promise<Array<TSFeedback>> {
     return db.select().from(feedback).where(eq(feedback.feedback_id, id));
 }
@@ -29,4 +30,9 @@ export async function updateFeedbackService(id: number, feedbackData: TIFeedback
 export async function deleteFeedbackService(id: number) {
     await db.delete(feedback).where(eq(feedback.feedback_id, id));
     return "Feedback deleted successfully";
+}
+
+// get student feedback
+export async function getStudentFeedbackService(id: number) {
+    return db.select().from(feedback).where(eq(feedback.feedback_id, id));
 }
