@@ -30,3 +30,7 @@ export async function deleteRecommendationsService(id: number) {
     await db.delete(recommendations).where(eq(recommendations.recommendations_id, id));
     return "Recommendations deleted successfully";
 }
+
+export async function studentRecemmendationService(id: number) {
+    return db.select().from(recommendations).where(eq(recommendations.student_id, id));
+}

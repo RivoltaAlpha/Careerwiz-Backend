@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { getRecommendationsById, createRecommendationsService,updateRecommendationsService,deleteRecommendationsService,AllRecommendationsService,} from "./services";
+import { getRecommendationsById, studentRecemmendationService, createRecommendationsService,updateRecommendationsService,deleteRecommendationsService,AllRecommendationsService,} from "./services";
 
 export const listRecommendations = async (c: Context) => {
     try {
@@ -82,7 +82,7 @@ export const getStudentRecommendations = async (c:Context) => {
         console.log(id);
         if (isNaN(id)) return c.text("Invalid ID", 400);
 
-        const recommendations = await getRecommendationsById(id);
+        const recommendations = await studentRecemmendationService(id);
         if (recommendations === null) {
             return c.text("recommendations not found", 404);
         }
