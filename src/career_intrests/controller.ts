@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { getCareerInterestById, createCareerInterestService,deleteCareerInterestService,updateCareerInterestService,AllCareerInterestsService,} from "./services";
+import { getCareerInterestById,getStudentCareerInterests, createCareerInterestService,deleteCareerInterestService,updateCareerInterestService,AllCareerInterestsService,} from "./services";
 
 export const listCareerInterests = async (c: Context) => {
     try {
@@ -72,5 +72,21 @@ export const deleteCareerInterest = async (c:Context) => {
         return c.json({ msg: deletedCareerInterest }, 200);
     }catch(error:any){
         return c.json({ error: error?.message }, 400);
+    }
+};
+
+// Get student career interests
+export const getingStudentCareerInterests = async (c:Context) => {
+    try{
+        const id = parseInt(c.req.param("id"));
+        if (isNaN(id)) return c.text("Invalid ID", 400);
+
+        const studentCareerInterests = await getStudentCareerInterests(id);
+        if (studentCareerInterests === null) {
+            return c.text("student career interests not found", 404);
+        }
+        return c.json(studentCareerInterests, 200);
+    }catch(error:any){
+        console.error(error?.message);
     }
 };

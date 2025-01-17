@@ -30,3 +30,33 @@ export async function deleteCareerInterestService(id: number) {
     await db.delete(careerInterests).where(eq(careerInterests.careerInterests_id, id));
     return "Career Interest deleted successfully";
 }
+
+// student career intrest services
+export async function getStudentCareerInterests(id: number) {
+    return await db.query.students.findMany({
+        where: (fields, { eq }) => eq(fields.student_id, id),
+        columns: {
+            student_id: true,
+            username: true,
+        },
+        with: {
+            careerInterests: {
+                columns: {
+                    careerInterests_id: true,
+                },
+                    with: {
+                        career: {
+                            columns: {
+                                career_id: true,
+                                career_name: true,
+                                description: true,
+                                requirements: true,
+                                subjects: true,
+                                interests: true,
+                            },
+                        },
+                    },
+            },
+        },
+    });
+}
