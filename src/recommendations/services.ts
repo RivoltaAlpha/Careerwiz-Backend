@@ -31,6 +31,21 @@ export async function deleteRecommendationsService(id: number) {
     return "Recommendations deleted successfully";
 }
 
-export async function studentRecemmendationService(id: number) {
-    return db.select().from(recommendations).where(eq(recommendations.student_id, id));
+// student recommendation services
+export async function getStudentRecommendations(id: number) {
+    return await db.query.students.findMany({
+        where: (fields, { eq }) => eq(fields.student_id, id),
+        columns: {
+            student_id: true,
+            username: true,
+        },
+        with: {
+            recommendations: {
+                columns: {
+                    recommendations_id: true,
+                    student_recommendations: true,
+                },
+            },
+        },
+    });
 }
