@@ -20,7 +20,7 @@ export const studentRelationships = relations(students, ({ many }) => ({
     recommendations: many(recommendations),
     feedback: many(feedback),
     academics: many(academics),
-    studentCareers: many(studentCareers),
+    careerInterests: many(careerInterests),
     personalIntrests: many(personalIntrests)
 }))
 
@@ -35,7 +35,7 @@ export const careers = pgTable("careers",{
     interests: varchar("interests", { length: 100 }).notNull(),
 });
 export const careerRelationships = relations(careers, ({ many }) => ({
-    studentCareers: many(studentCareers), // A career can be linked to multiple students
+    careerInterests: many(careerInterests), // A career can be linked to multiple students
   }));
   
 
@@ -105,18 +105,18 @@ export const academicRelationships = relations(academics, ({ one }) => ({
 
 
 // Student Career Interests
-export const studentCareers = pgTable("student_careers", {
-    studentcareers_id: serial("studentcareers_id").primaryKey(),
+export const careerInterests = pgTable("student_careers", {
+    careerInterests_id: serial("careerInterests_id").primaryKey(),
     student_id: integer("student_id").references(() => students.student_id, { onDelete: "cascade" }),
     career_id: integer("career_id").references(() => careers.career_id, { onDelete: "cascade" }),
 });
-export const studentCareerRelationships = relations(studentCareers, ({ one }) => ({
+export const studentCareerRelationships = relations(careerInterests, ({ one }) => ({
     student: one(students, {
-      fields: [studentCareers.student_id],
+      fields: [careerInterests.student_id],
       references: [students.student_id],
     }),
     career: one(careers, {
-      fields: [studentCareers.career_id],
+      fields: [careerInterests.career_id],
       references: [careers.career_id],
     }),
   }));
@@ -143,7 +143,15 @@ export type TIstudents = typeof students.$inferInsert;
 export type TSstudents = typeof students.$inferSelect;
 export type TICareers = typeof careers.$inferInsert;
 export type TSCareers = typeof careers.$inferSelect;
+export type TIcareerInterests = typeof careerInterests.$inferInsert;
+export type TScareerInterests = typeof careerInterests.$inferSelect;
+export type TIpersonalIntrests = typeof personalIntrests.$inferInsert;
+export type TSpersonalIntrests = typeof personalIntrests.$inferSelect;
 export type TIRecommendations = typeof recommendations.$inferInsert;
 export type TSRecommendations = typeof recommendations.$inferSelect;
 export type TIFeedback = typeof feedback.$inferInsert;
 export type TSFeedback = typeof feedback.$inferSelect;
+export type TIacademics = typeof academics.$inferInsert;
+export type TSacademics = typeof academics.$inferSelect;
+export type TIsubjects = typeof subjects.$inferInsert;
+export type TSsubjects = typeof subjects.$inferSelect;
