@@ -30,3 +30,33 @@ export async function deleteAcademicService(id: number) {
     await db.delete(academics).where(eq(academics.academic_id, id));
     return "Academic deleted successfully";
 }
+
+// student academic services
+export async function getStudentAcademics(id: number){
+    return await db.query.students.findMany({
+        where: (fields, { eq }) => eq(fields.student_id, id),
+        columns: {
+            student_id: true,
+            firstname: true,
+            lastname:true,
+            username: true,
+        },
+        with: {
+            academics: {
+                columns: {
+                    academic_id: true,
+                    grade: true,
+                    subject_score: true,
+                    year: true,
+                },
+                    with: {
+                    subject: {
+                        columns: {
+                            subject_id: true,
+                            subject: true,
+                        }},
+            },
+        },
+    },
+    });
+};
