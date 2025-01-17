@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { AllPersonalIntrestsService, createPersonalIntrestService, updatePersonalIntrestService,deletePersonalIntrestService, getPersonalIntrestById } from "./services";
+import { AllPersonalIntrestsService, createPersonalIntrestService, updatePersonalIntrestService,deletePersonalIntrestService, getPersonalIntrestById, getStudentPersonalIntrests } from "./services";
 
 
 export const listPersonalIntrests = async (c: Context) => {
@@ -74,5 +74,23 @@ export const deletePersonalIntrest = async (c:Context) => {
         return c.json({ msg: deletedPersonalIntrest }, 200);
     }catch(error:any){
         return c.json({ error: error?.message }, 400);
+    }
+};
+
+// Get Intrests by student id
+export const getStudentIntrests = async (c:Context) => {
+    try{
+        const id = parseInt(c.req.param("id"));
+        console.log(id);
+        if (isNaN(id)) return c.text("Invalid ID", 400);
+
+        const studentIntrests = await getStudentPersonalIntrests(id);
+        if (studentIntrests === null) {
+            return c.text("personal intrest not found", 404);
+        }
+        return c.json(studentIntrests, 200);
+
+    }catch(error:any){
+        console.error(error?.message);
     }
 };

@@ -29,3 +29,22 @@ export async function deletePersonalIntrestService(id: number) {
     await db.delete(personalIntrests).where(eq(personalIntrests.id, id));
     return "Personal Intrest deleted successfully";
 }
+
+// student personal intrest services
+export async function getStudentPersonalIntrests(id: number) {
+    return await db.query.students.findMany({
+        where: (fields, { eq }) => eq(fields.student_id, id),
+        columns: {
+            student_id: true,
+            username: true,
+        },
+        with: {
+            personalIntrests: {
+                columns: {
+                    id: true,
+                    personal_interests: true,
+                },
+            },
+        },
+    });
+}
