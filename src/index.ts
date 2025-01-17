@@ -12,6 +12,10 @@ import { feedbackRouter } from './feedback/route';
 import { recommendationsRouter } from './recommendations/route';
 import { studentRouter } from './students/route';
 import { authRouter } from './authentication/routing';
+import { careerInterestsRouter } from './career_intrests/route';
+import { personalIntrestsRouter } from './personal_intrests/route';
+import { academicsRouter } from './academics/route';
+import { subjectsRouter } from './subjects/route';
 
 const app = new Hono()
 
@@ -51,6 +55,10 @@ app.route("/", careersRouter);
 app.route("/", studentRouter);
 app.route("/", feedbackRouter);
 app.route("/", recommendationsRouter);
+app.route("/", careerInterestsRouter);
+app.route("/", personalIntrestsRouter);
+app.route("/", academicsRouter);
+app.route("/", subjectsRouter);
 
 
 const port = 3000
