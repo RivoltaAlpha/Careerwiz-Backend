@@ -33,6 +33,22 @@ export async function deleteFeedbackService(id: number) {
 }
 
 // get student feedback
-export async function getStudentFeedbackService(id: number) {
-    return db.select().from(feedback).where(eq(feedback.feedback_id, id));
-}
+export async function getStudentFeedback(id: number) {
+    return await db.query.students.findMany({
+      where: (fields, {eq}) => eq(fields.student_id, id),
+      columns:{
+        student_id: true,
+        username: true,
+      },
+      with: {
+        feedback: {
+          columns: {
+            feedback_id: true,
+            name: true,
+            email: true,
+            message: true,
+          },
+        },
+      },
+      });
+  }

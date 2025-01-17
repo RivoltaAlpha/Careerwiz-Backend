@@ -1,5 +1,5 @@
 import {Context} from "hono";
-import { getFeedbackById, createFeedbackService,updateFeedbackService,deleteFeedbackService,AllfeedbackService,getStudentFeedbackService} from "./services";
+import { getFeedbackById, createFeedbackService,updateFeedbackService,deleteFeedbackService,AllfeedbackService,getStudentFeedback} from "./services";
 import { error } from "console";
 
 export const listFeedback = async (c: Context) => {
@@ -77,12 +77,12 @@ export const deleteFeedback = async (c:Context) => {
 };
 
 // Get student feedback
-export const getStudentFeedback = async (c:Context) => {
+export const getStudentsFeedback = async (c:Context) => {
     const id = parseInt(c.req.param("id"));
     if (isNaN(id)) return c.text("Invalid ID", 400);
 
     try{
-        const feedback = await getStudentFeedbackService(id);
+        const feedback = await getStudentFeedback(id);
         return c.json(feedback, 200);
     }
     catch(error:any){     
