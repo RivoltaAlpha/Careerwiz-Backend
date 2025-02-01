@@ -9,10 +9,14 @@ export const userSchema = z.object({
 });
 
 export const StudentSchema = z.object({
+    firstname: z.string(),
+    lastname: z.string(),
     username: z.string(),
-    email: z.string().email(),
     password: z.string(),
-    role: z.string()
+    email: z.string().optional(),
+    role: z.string(),
+    contact: z.string().optional(),
+    school: z.string(),
 });
 
 export const loginUserShema = z.object({
