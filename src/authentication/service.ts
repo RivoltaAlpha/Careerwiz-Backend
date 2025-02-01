@@ -9,9 +9,13 @@ export const loginAuthService = async (user:TSstudents ) => {
     const foundUser = await db.query.students.findFirst({
       columns: {
         student_id: true,
+        firstname: true,
+        lastname: true,
         username: true,
         password: true,
         email: true,
+        school: true,
+        contact: true,
         role: true,
       },
       where: sql` ${students.username} = ${username}`
@@ -38,11 +42,12 @@ export const RegisteringService = async (user: TIstudents) => {
       firstname: user.firstname,
       lastname: user.lastname,
       username: user.username,
-      email: user.email,
+      email: user.email || '',
       password: hashedPassword,
       school: user.school,
+      contact: user.contact || '',
       role: user.role || 'student',
-      date_joined: sql`now()`,
+      created_at: sql`now()`,
       updated_at: sql`now()`
     }).returning();
 
