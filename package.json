@@ -3,10 +3,10 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "gen": "drizzle-kit generate",
-    "migrate": " tsx src/drizzle/migrate.ts",
+    "migrations": "npx drizzle-kit migrate",
     "studio": "drizzle-kit studio",
     "push": " drizzle-kit generate && tsx src/drizzle/migrate.ts"
   },
