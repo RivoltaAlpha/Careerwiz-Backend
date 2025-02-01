@@ -7,7 +7,7 @@ export const students = pgTable("students", {
     firstname: varchar("firstname", { length: 50 }).notNull(),
     lastname: varchar("lastname", { length: 50 }).notNull(),
     username: varchar("username", { length: 50 }).notNull().unique(),
-    password: varchar("password", { length: 50 }).notNull(),
+    password: varchar("password", { length: 100 }).notNull(),
     email: varchar("email", { length: 50 }).unique(),
     contact: varchar("contact", { length: 50 }),
     school: varchar("school", { length: 50 }).notNull(),
