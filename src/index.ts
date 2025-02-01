@@ -2,7 +2,8 @@ import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { logger } from "hono/logger";
 import { csrf } from "hono/csrf";
-import {cors} from 'hono/cors'
+import { Context } from 'hono';
+import { cors} from 'hono/cors'
 import { trimTrailingSlash } from "hono/trailing-slash";
 import { timeout } from "hono/timeout";
 import { HTTPException } from "hono/http-exception";
@@ -21,9 +22,12 @@ const app = new Hono()
 
 // inbuilt middlewares
 app.use(logger()); //logs request and response to the console
-app.use(csrf()); //prevents CSRF attacks by checking request headers.
 app.use(trimTrailingSlash()); //removes trailing slashes from the request URL
 app.use(cors()) //allows cross-origin requests
+app.use(csrf()); // CSRF protection middleware
+app.get('/csrf-token', (c: Context) => {
+  return c.json({ csrfToken: c.get('csrfToken') });
+});
 
 const customTimeoutException = () =>
   new HTTPException(408, {
