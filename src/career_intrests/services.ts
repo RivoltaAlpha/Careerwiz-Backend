@@ -1,7 +1,6 @@
 import db from "../drizzle/db";
 import { eq } from "drizzle-orm";
 import { TScareerInterests, careerInterests, TIcareerInterests } from "../drizzle/schema";
-import exp = require("constants");
 
 export const AllCareerInterestsService = async (limit?: number): Promise<TScareerInterests[] | null> => {
     if (limit) {
