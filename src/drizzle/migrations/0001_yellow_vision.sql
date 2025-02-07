@@ -1,1 +1,0 @@
-ALTER TABLE "students" ALTER COLUMN "password" SET DATA TYPE varchar(100);

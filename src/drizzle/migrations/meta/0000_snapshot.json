@@ -1,5 +1,5 @@
 {
-  "id": "545e13e7-78d3-4eb2-825c-7658f109efe8",
+  "id": "d5a20cbc-b719-4e13-a3a4-8acdb7a4e336",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -184,6 +184,13 @@
           "type": "varchar(100)",
           "primaryKey": false,
           "notNull": true
+        },
+        "image": {
+          "name": "image",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'https://thumbs.dreamstime.com/z/career-concept-technology-light-background-blurred-abstract-168248861.jpg'"
         }
       },
       "indexes": {},
@@ -371,7 +378,7 @@
         },
         "password": {
           "name": "password",
-          "type": "varchar(50)",
+          "type": "varchar(100)",
           "primaryKey": false,
           "notNull": true
         },

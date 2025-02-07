@@ -33,7 +33,7 @@ export const careers = pgTable("careers",{
     requirements: varchar("requirements", { length: 100 }).notNull(),
     subjects: varchar("subjects", { length: 100 }).notNull(),
     interests: varchar("interests", { length: 100 }).notNull(),
-    image: varchar("image", { length: 100 }).default("https://thumbs.dreamstime.com/z/career-concept-technology-light-background-blurred-abstract-168248861.jpg").notNull(),
+    image: varchar("image", { length: 200 }).default("https://thumbs.dreamstime.com/z/career-concept-technology-light-background-blurred-abstract-168248861.jpg"),
 });
 export const careerRelationships = relations(careers, ({ many }) => ({
     careerInterests: many(careerInterests), // A career can be linked to multiple students

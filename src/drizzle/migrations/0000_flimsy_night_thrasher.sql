@@ -20,7 +20,8 @@ CREATE TABLE "careers" (
 	"description" text NOT NULL,
 	"requirements" varchar(100) NOT NULL,
 	"subjects" varchar(100) NOT NULL,
-	"interests" varchar(100) NOT NULL
+	"interests" varchar(100) NOT NULL,
+	"image" varchar(200) DEFAULT 'https://thumbs.dreamstime.com/z/career-concept-technology-light-background-blurred-abstract-168248861.jpg'
 );
 --> statement-breakpoint
 CREATE TABLE "feedback" (
@@ -48,7 +49,7 @@ CREATE TABLE "students" (
 	"firstname" varchar(50) NOT NULL,
 	"lastname" varchar(50) NOT NULL,
 	"username" varchar(50) NOT NULL,
-	"password" varchar(50) NOT NULL,
+	"password" varchar(100) NOT NULL,
 	"email" varchar(50),
 	"contact" varchar(50),
 	"school" varchar(50) NOT NULL,
