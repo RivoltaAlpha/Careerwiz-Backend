@@ -33,6 +33,7 @@ export const careers = pgTable("careers",{
     requirements: varchar("requirements", { length: 100 }).notNull(),
     subjects: varchar("subjects", { length: 100 }).notNull(),
     interests: varchar("interests", { length: 100 }).notNull(),
+    image: varchar("image", { length: 100 }),
 });
 export const careerRelationships = relations(careers, ({ many }) => ({
     careerInterests: many(careerInterests), // A career can be linked to multiple students
@@ -74,7 +75,7 @@ export const feedbackRelationships = relations(feedback, ({ one }) => ({
 // Student Subjects
 export const subjects = pgTable("subjects", {
     subject_id: serial("subject_id").primaryKey(),
-    subject: varchar("subject", { length: 50 }).notNull().unique(),
+    subject_name: varchar("subject", { length: 50 }).notNull().unique(),
 });
 export const subjectRelationships = relations(subjects, ({ many }) => ({
     academics: many(academics), // A subject can have multiple academic records
