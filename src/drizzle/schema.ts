@@ -62,7 +62,9 @@ export const feedback = pgTable("feedback", {
     name: varchar("name", { length: 50 }).notNull(),
     email: varchar("email", { length: 50 }).notNull(),
     message: varchar("message", { length: 2000 }).notNull(),
+    contact: varchar("contact", { length: 50 }),
     student_id: integer("student_id").references(() => students.student_id, { onDelete: "cascade" }),
+    recommendation: integer("recommendation").references(() => recommendations.recommendations_id, {onDelete: "cascade"})
 });
 export const feedbackRelationships = relations(feedback, ({ one }) => ({
     student: one(students, {
@@ -102,7 +104,6 @@ export const academicRelationships = relations(academics, ({ one }) => ({
       references: [subjects.subject_id],
     }),
   }));
-  
 
 
 // Student Career Interests
@@ -121,7 +122,6 @@ export const studentCareerRelationships = relations(careerInterests, ({ one }) =
       references: [careers.career_id],
     }),
   }));
-  
 
 
 // Student Personal Interests
@@ -137,8 +137,6 @@ export const studentInterestRelationships = relations(personalIntrests, ({ one }
     }),
   }));
   
-
-
 
 export type TIstudents = typeof students.$inferInsert;
 export type TSstudents = typeof students.$inferSelect;
