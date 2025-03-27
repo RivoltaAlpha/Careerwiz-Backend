@@ -29,3 +29,35 @@ Content-Type: application/json
   "password": "password"
 }
 
+###  
+POST http://localhost:8000/create-career
+Content-Type: application/json
+
+  {
+    "career_name": "Civil Engineer",
+    "description": "Design and oversee construction of infrastructure projects.",
+    "requirements": "Bachelor's in Civil Engineering",
+    "subjects": "Mathematics, Physics, Geography",
+    "interests": "Urban Development, Structural Design",
+    "image": "https://thumbs.dreamstime.com/z/career-concept-technology-light-background-blurred-abstract-168248861.jpg"
+  }
+
+###
+GET  http://localhost:8000/all-careers
+
+###
+POST http://localhost:8000/create-feedback
+Content-Type: application/json
+
+{
+  "name": "Tiffany Perkins",
+  "email": "tiffperks@gmail.com",
+  "message": "I love this career!",
+  "contact": "123-456-7890"
+}
+
+###
+GET  http://localhost:8000/students
+###
+DELETE   http://localhost:8000/delete-student/1
+
