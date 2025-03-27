@@ -1,5 +1,5 @@
 import  db  from '../drizzle/db';
-import { sql} from 'drizzle-orm';
+import { eq, sql} from 'drizzle-orm';
 import {  students, TSstudents, TIstudents } from "../drizzle/schema";
 import { hash } from 'bcrypt';
 
@@ -18,16 +18,17 @@ export const loginAuthService = async (user:TSstudents ) => {
         contact: true,
         role: true,
       },
-      where: sql` ${students.username} = ${username}`
+      where: eq(students.username, username)
     });
     console.log('Found user:', foundUser);
 
     if (!foundUser) {
-        throw new Error('User not found');
+        return null;
       }
     return foundUser;
   } catch (error) {
     console.error('Error logging in user:', error);
+    return null;
   }
 };
 

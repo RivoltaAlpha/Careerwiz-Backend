@@ -14,9 +14,6 @@ export const registerUser = async (c: Context) => {
       throw new Error("Password is required");
     }
 
-    const hashedPassword = await hash(user.password, 10);
-    user.password = hashedPassword;
-
     const createdUser = await RegisteringService(user);
     if (!createdUser) return c.text("User not created😭😭", 404);
 
