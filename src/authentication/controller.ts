@@ -94,7 +94,7 @@ export const loginUser = async (c: Context) => {
       };
       const secret = process.env.JWT_SECRET as string;
       const token = await sign(payload, secret);
-      return c.json({ token, user: { user_id: foundUser?.student_id, username: foundUser?.username } }, 200);
+      return c.json({ token, user: { user_id: foundUser?.student_id, username: foundUser?.username, firstname: foundUser?.firstname,lastname: foundUser?.lastname, contact:foundUser?.contact, school:foundUser?.school, email:foundUser?.email} }, 200);
     }
   } catch (error: any) {
     console.error('Error during login:', error);

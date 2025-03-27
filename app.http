@@ -61,3 +61,26 @@ GET  http://localhost:8000/students
 ###
 DELETE   http://localhost:8000/delete-student/1
 
+###
+POST http://localhost:8000/create-personal-intrest
+Content-Type: application/json
+
+{
+  "student_id": 11,
+  "personal_interests": "Skating, poetry, Anime"
+}
+
+###
+DELETE  http://localhost:8000/delete-personal-intrest/5
+
+###
+POST http://localhost:8000/create-recommendations
+Content-Type: application/json
+
+{
+  "student_id": 11,
+  "student_recommendations": "Bachelor of Science (Applied Bioengineering), Bachelor of Technology in Medical Engineering, Bachelor of Science (Biomedical Engineering), Bachelor of Science in Applied Bioengineering, Bachelor of Science"
+}
+
+###
+GET http://localhost:8000/get-student-recommendations/11
