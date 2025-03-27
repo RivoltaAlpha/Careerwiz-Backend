@@ -8,6 +8,13 @@
       "when": 1738928909380,
       "tag": "0000_flimsy_night_thrasher",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1743081154005,
+      "tag": "0001_uneven_husk",
+      "breakpoints": true
     }
   ]
 }
