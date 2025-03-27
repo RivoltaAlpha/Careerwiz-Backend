@@ -53,7 +53,7 @@ export async function getStudentAcademics(id: number){
                     subject: {
                         columns: {
                             subject_id: true,
-                            subject: true,
+                            subject_name: true,
                         }},
             },
         },
