@@ -88,21 +88,15 @@ export const subjectRelationships = relations(subjects, ({ many }) => ({
 export const academics = pgTable("academics", {
     academic_id: serial("academic_id").primaryKey(),
     student_id: integer("student_id").references(() => students.student_id, { onDelete: "cascade" }).notNull(),
-    subject_id: integer("subject_id").references(() => subjects.subject_id, { onDelete: "cascade" }).notNull(),
-    grade: varchar("grade", { length: 10 }).notNull(),
-    subject_score: smallint("score").notNull(),
-    year: smallint("year"),
+    subjects: text("subjects").notNull(),
+    academic_history: text("academic_history").notNull(),
     updated_at: timestamp("updated_at").defaultNow().notNull(),
 });
 export const academicRelationships = relations(academics, ({ one }) => ({
     student: one(students, {
       fields: [academics.student_id],
       references: [students.student_id],
-    }),
-    subject: one(subjects, {
-      fields: [academics.subject_id],
-      references: [subjects.subject_id],
-    }),
+    })
   }));
 
 

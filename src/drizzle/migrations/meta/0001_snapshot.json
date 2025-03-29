@@ -1,6 +1,6 @@
 {
-  "id": "00a50ed1-b947-47a2-9bac-36961d268468",
-  "prevId": "d5a20cbc-b719-4e13-a3a4-8acdb7a4e336",
+  "id": "3d9bf3ae-d8da-49ca-b154-3c4ef072e4bf",
+  "prevId": "14022a2f-6311-404f-8c64-cb029f86cf9d",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -20,29 +20,17 @@
           "primaryKey": false,
           "notNull": true
         },
-        "subject_id": {
-          "name": "subject_id",
-          "type": "integer",
+        "subjects": {
+          "name": "subjects",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "grade": {
-          "name": "grade",
-          "type": "varchar(10)",
+        "academic_history": {
+          "name": "academic_history",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
-        },
-        "score": {
-          "name": "score",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "year": {
-          "name": "year",
-          "type": "smallint",
-          "primaryKey": false,
-          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -63,19 +51,6 @@
           ],
           "columnsTo": [
             "student_id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        },
-        "academics_subject_id_subjects_subject_id_fk": {
-          "name": "academics_subject_id_subjects_subject_id_fk",
-          "tableFrom": "academics",
-          "tableTo": "subjects",
-          "columnsFrom": [
-            "subject_id"
-          ],
-          "columnsTo": [
-            "subject_id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -403,7 +378,7 @@
         },
         "password": {
           "name": "password",
-          "type": "varchar(100)",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true
         },

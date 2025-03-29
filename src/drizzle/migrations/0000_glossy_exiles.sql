@@ -1,10 +1,7 @@
 CREATE TABLE "academics" (
 	"academic_id" serial PRIMARY KEY NOT NULL,
 	"student_id" integer NOT NULL,
-	"subject_id" integer NOT NULL,
-	"grade" varchar(10) NOT NULL,
-	"score" smallint NOT NULL,
-	"year" smallint,
+	"subjects" text NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
@@ -29,7 +26,9 @@ CREATE TABLE "feedback" (
 	"name" varchar(50) NOT NULL,
 	"email" varchar(50) NOT NULL,
 	"message" varchar(2000) NOT NULL,
-	"student_id" integer
+	"contact" varchar(50),
+	"student_id" integer,
+	"recommendation" integer
 );
 --> statement-breakpoint
 CREATE TABLE "student_interests" (
@@ -49,7 +48,7 @@ CREATE TABLE "students" (
 	"firstname" varchar(50) NOT NULL,
 	"lastname" varchar(50) NOT NULL,
 	"username" varchar(50) NOT NULL,
-	"password" varchar(100) NOT NULL,
+	"password" varchar(255) NOT NULL,
 	"email" varchar(50),
 	"contact" varchar(50),
 	"school" varchar(50) NOT NULL,
@@ -67,9 +66,9 @@ CREATE TABLE "subjects" (
 );
 --> statement-breakpoint
 ALTER TABLE "academics" ADD CONSTRAINT "academics_student_id_students_student_id_fk" FOREIGN KEY ("student_id") REFERENCES "public"."students"("student_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
-ALTER TABLE "academics" ADD CONSTRAINT "academics_subject_id_subjects_subject_id_fk" FOREIGN KEY ("subject_id") REFERENCES "public"."subjects"("subject_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "student_careers" ADD CONSTRAINT "student_careers_student_id_students_student_id_fk" FOREIGN KEY ("student_id") REFERENCES "public"."students"("student_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "student_careers" ADD CONSTRAINT "student_careers_career_id_careers_career_id_fk" FOREIGN KEY ("career_id") REFERENCES "public"."careers"("career_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "feedback" ADD CONSTRAINT "feedback_student_id_students_student_id_fk" FOREIGN KEY ("student_id") REFERENCES "public"."students"("student_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE "feedback" ADD CONSTRAINT "feedback_recommendation_recommendations_recommendations_id_fk" FOREIGN KEY ("recommendation") REFERENCES "public"."recommendations"("recommendations_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "student_interests" ADD CONSTRAINT "student_interests_student_id_students_student_id_fk" FOREIGN KEY ("student_id") REFERENCES "public"."students"("student_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
 ALTER TABLE "recommendations" ADD CONSTRAINT "recommendations_student_id_students_student_id_fk" FOREIGN KEY ("student_id") REFERENCES "public"."students"("student_id") ON DELETE cascade ON UPDATE no action;

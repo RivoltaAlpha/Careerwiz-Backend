@@ -45,16 +45,9 @@ export async function getStudentAcademics(id: number){
             academics: {
                 columns: {
                     academic_id: true,
-                    grade: true,
-                    subject_score: true,
-                    year: true,
-                },
-                    with: {
-                    subject: {
-                        columns: {
-                            subject_id: true,
-                            subject_name: true,
-                        }},
+                    student_id: true,
+                    subjects: true,
+                    academic_history: true,
             },
         },
     },

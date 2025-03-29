@@ -5,22 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1738928909380,
-      "tag": "0000_flimsy_night_thrasher",
+      "when": 1743280437416,
+      "tag": "0000_glossy_exiles",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1743081154005,
-      "tag": "0001_uneven_husk",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1743082934234,
-      "tag": "0002_goofy_doctor_doom",
+      "when": 1743283120439,
+      "tag": "0001_glossy_vulcan",
       "breakpoints": true
     }
   ]

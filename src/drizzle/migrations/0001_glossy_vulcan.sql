@@ -1,0 +1,1 @@
+ALTER TABLE "academics" ADD COLUMN "academic_history" text NOT NULL;
