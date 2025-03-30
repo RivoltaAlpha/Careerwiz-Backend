@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { getAcademicById, createAcademicService,updateAcademicService,deleteAcademicService,AllAcademicsService, getStudentAcademics} from "./services";
+import { getAcademicById, createAcademicService,updateAcademicService,deleteAcademicService,AllAcademicsService, getStudentAcademics, getAcademicHistory} from "./services";
 
 export const listAcademics = async (c: Context) => {
     try {
@@ -82,6 +82,23 @@ export const getStudentsAcademics = async (c:Context) => {
         if (isNaN(id)) return c.text("Invalid ID", 400);
 
         const studentAcademics = await getStudentAcademics(id);
+        if (studentAcademics === null) {
+            return c.text("student academics not found", 404);
+        }
+        return c.json(studentAcademics, 200);
+
+    }catch(error:any){
+        console.error(error?.message);
+    }
+};
+
+// Get academic history
+export const getAcademicHistories = async (c:Context) => {
+    try{
+        const id = parseInt(c.req.param("id"));
+        if (isNaN(id)) return c.text("Invalid ID", 400);
+
+        const studentAcademics = await getAcademicHistory(id);
         if (studentAcademics === null) {
             return c.text("student academics not found", 404);
         }

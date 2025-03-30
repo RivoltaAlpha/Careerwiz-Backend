@@ -53,3 +53,13 @@ export async function getStudentAcademics(id: number){
     },
     });
 };
+
+export async function getAcademicHistory(id: number){
+    return await db.query.academics.findMany({
+        where: (fields, { eq }) => eq(fields.student_id, id),
+        columns: {
+            subjects: true,
+            academic_history: true,
+        },
+    });
+}
