@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import {  serial, text,varchar, timestamp, integer, pgTable, smallint } from "drizzle-orm/pg-core";
+import {  serial, text,varchar, timestamp, integer, pgTable, smallint, jsonb } from "drizzle-orm/pg-core";
 
 // Students
 export const students = pgTable("students", {
@@ -38,14 +38,13 @@ export const careers = pgTable("careers",{
 export const careerRelationships = relations(careers, ({ many }) => ({
     careerInterests: many(careerInterests), // A career can be linked to multiple students
   }));
-  
 
 
 // Recommendations
 export const recommendations = pgTable("recommendations", {
     recommendations_id: serial("recommendations_id").primaryKey(),
     student_id: integer("student_id").references(() => students.student_id, {onDelete: "cascade"}),
-    student_recommendations: text("student_recommendations"),
+    student_recommendations: jsonb("student_recommendations"),
 
 });
 export const recommendationRelationships = relations(recommendations, ({ one }) =>({
@@ -72,24 +71,13 @@ export const feedbackRelationships = relations(feedback, ({ one }) => ({
       references: [students.student_id],
     }),
   }));
-  
-
-// Student Subjects
-export const subjects = pgTable("subjects", {
-    subject_id: serial("subject_id").primaryKey(),
-    subject_name: varchar("subject", { length: 50 }).notNull().unique(),
-});
-export const subjectRelationships = relations(subjects, ({ many }) => ({
-    academics: many(academics), // A subject can have multiple academic records
-  }));
-  
 
 // Academics
 export const academics = pgTable("academics", {
     academic_id: serial("academic_id").primaryKey(),
     student_id: integer("student_id").references(() => students.student_id, { onDelete: "cascade" }).notNull(),
-    subjects: text("subjects").notNull(),
-    academic_history: text("academic_history").notNull(),
+    subjects: jsonb("subjects").notNull(),
+    academic_history: jsonb("academic_history").notNull(),
     updated_at: timestamp("updated_at").defaultNow().notNull(),
 });
 export const academicRelationships = relations(academics, ({ one }) => ({
@@ -146,5 +134,3 @@ export type TIFeedback = typeof feedback.$inferInsert;
 export type TSFeedback = typeof feedback.$inferSelect;
 export type TIacademics = typeof academics.$inferInsert;
 export type TSacademics = typeof academics.$inferSelect;
-export type TIsubjects = typeof subjects.$inferInsert;
-export type TSsubjects = typeof subjects.$inferSelect;
