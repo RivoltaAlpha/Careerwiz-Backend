@@ -5,15 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1743280437416,
-      "tag": "0000_glossy_exiles",
+      "when": 1743284792995,
+      "tag": "0000_minor_jamie_braddock",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1743283120439,
-      "tag": "0001_glossy_vulcan",
+      "when": 1743334442094,
+      "tag": "0001_fair_shard",
       "breakpoints": true
     }
   ]

@@ -1,7 +1,8 @@
 CREATE TABLE "academics" (
 	"academic_id" serial PRIMARY KEY NOT NULL,
 	"student_id" integer NOT NULL,
-	"subjects" text NOT NULL,
+	"subjects" jsonb NOT NULL,
+	"academic_history" jsonb NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
@@ -57,12 +58,6 @@ CREATE TABLE "students" (
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "students_username_unique" UNIQUE("username"),
 	CONSTRAINT "students_email_unique" UNIQUE("email")
-);
---> statement-breakpoint
-CREATE TABLE "subjects" (
-	"subject_id" serial PRIMARY KEY NOT NULL,
-	"subject" varchar(50) NOT NULL,
-	CONSTRAINT "subjects_subject_unique" UNIQUE("subject")
 );
 --> statement-breakpoint
 ALTER TABLE "academics" ADD CONSTRAINT "academics_student_id_students_student_id_fk" FOREIGN KEY ("student_id") REFERENCES "public"."students"("student_id") ON DELETE cascade ON UPDATE no action;--> statement-breakpoint

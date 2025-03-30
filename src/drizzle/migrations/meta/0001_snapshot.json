@@ -1,6 +1,6 @@
 {
-  "id": "3d9bf3ae-d8da-49ca-b154-3c4ef072e4bf",
-  "prevId": "14022a2f-6311-404f-8c64-cb029f86cf9d",
+  "id": "9d5d8123-3f9a-4e54-9587-6f111ef76a2e",
+  "prevId": "5beaacaf-365b-404e-9436-48e56c5178f6",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -22,13 +22,13 @@
         },
         "subjects": {
           "name": "subjects",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": true
         },
         "academic_history": {
           "name": "academic_history",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": true
         },
@@ -321,7 +321,7 @@
         },
         "student_recommendations": {
           "name": "student_recommendations",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         }
@@ -438,39 +438,6 @@
           "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
-        }
-      },
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.subjects": {
-      "name": "subjects",
-      "schema": "",
-      "columns": {
-        "subject_id": {
-          "name": "subject_id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "subject": {
-          "name": "subject",
-          "type": "varchar(50)",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "subjects_subject_unique": {
-          "name": "subjects_subject_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "subject"
           ]
         }
       },

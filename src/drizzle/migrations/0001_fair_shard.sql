@@ -1,0 +1,1 @@
+ALTER TABLE "recommendations" ALTER COLUMN "student_recommendations" SET DATA TYPE jsonb;
