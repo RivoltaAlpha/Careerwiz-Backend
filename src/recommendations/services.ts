@@ -49,3 +49,24 @@ export async function getStudentRecommendations(id: number) {
         },
     });
 }
+
+// get students personal interest and subjects
+export async function getStudentRecommendationAttributes(id: number) {
+    return await db.query.students.findMany({
+        where: (fields, { eq }) => eq(fields.student_id, id),
+        columns: {
+        },
+        with: {
+            personalIntrests: {
+                columns: {
+                    personal_interests: true,
+                },
+            },
+            academics: {
+                columns: {
+                    subjects: true,
+                },
+            },
+        },
+    });
+}

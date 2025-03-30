@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { getRecommendationsById, createRecommendationsService,updateRecommendationsService,deleteRecommendationsService,AllRecommendationsService,getStudentRecommendations} from "./services";
+import { getRecommendationsById, createRecommendationsService,updateRecommendationsService,deleteRecommendationsService,AllRecommendationsService,getStudentRecommendations, getStudentRecommendationAttributes} from "./services";
 
 export const listRecommendations = async (c: Context) => {
     try {
@@ -92,3 +92,21 @@ export const getStudentsRecommendations = async (c:Context) => {
         console.error(error?.message);
     }
 };
+
+// get student recommendations attributes
+export const getStudentsRecommendationsAttributes = async (c:Context) => {
+    try{
+        const id = parseInt(c.req.param("id"));
+        console.log(id);
+        if (isNaN(id)) return c.text("Invalid ID", 400);
+
+        const recommendations = await getStudentRecommendationAttributes(id);
+        if (recommendations === null) {
+            return c.text("recommendations not found", 404);
+        }
+        return c.json(recommendations, 200);
+
+    }catch(error:any){
+        console.error(error?.message);
+    }
+}
