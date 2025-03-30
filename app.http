@@ -34,11 +34,11 @@ POST http://localhost:8000/create-career
 Content-Type: application/json
 
   {
-    "career_name": "Civil Engineer",
-    "description": "Design and oversee construction of infrastructure projects.",
-    "requirements": "Bachelor's in Civil Engineering",
-    "subjects": "Mathematics, Physics, Geography",
-    "interests": "Urban Development, Structural Design",
+    "career_name": "Software Engineer",
+    "description": "Design, develop, and maintain software systems and applications.",
+    "requirements": "Bachelor's in Computer Science or related field",
+    "subjects": "Mathematics, Computer Studies, Physics",
+    "interests": "Programming, Problem-solving, AI",
     "image": "https://thumbs.dreamstime.com/z/career-concept-technology-light-background-blurred-abstract-168248861.jpg"
   }
 
@@ -78,9 +78,54 @@ POST http://localhost:8000/create-recommendations
 Content-Type: application/json
 
 {
-  "student_id": 11,
-  "student_recommendations": "Bachelor of Science (Applied Bioengineering), Bachelor of Technology in Medical Engineering, Bachelor of Science (Biomedical Engineering), Bachelor of Science in Applied Bioengineering, Bachelor of Science"
+  "student_id": 1,
+  "student_recommendations": ' "Bachelor of Science (Applied Bioengineering), Bachelor of Technology in Medical Engineering, Bachelor of Science (Biomedical Engineering)","Bachelor of Science in Applied Bioengineering"',
 }
 
 ###
-GET http://localhost:8000/get-student-recommendations/11
+POST http://localhost:8000/create-recommendations
+Content-Type: application/json
+
+{
+    "student_id": 1,
+    "student_recommendations": [
+      "Bachelor of Science in Food Service and Hospitality Management",
+      "Bachelor of Arts (Translation and Interpretation)",
+      "Bachelor of Arts (Theatre Arts & Film Technology)",
+      "Bachelor of Science (Food Operations Management)",
+      "Bachelor of Arts (Literature)"
+    ]
+  }
+
+###
+GET http://localhost:8000/get-students-career-interests/1
+###
+GET http://localhost:8000/get-student-academics/1
+
+###
+GET http://localhost:8000/student-history/1
+
+
+###
+POST http://localhost:8000/create-academic
+Content-Type: application/json
+
+{
+  "student_id": 1,
+  "subject_id": 4,
+  "grade": "A",
+}
+
+###
+POST http://localhost:8000/create-subject
+Content-Type: application/json
+
+{
+  "subject_name": "Home science"
+}
+
+###
+GET http://localhost:8000/get-student-recommendations/1
+
+###
+GET http://localhost:8000/get-recommendation-attributes/1
