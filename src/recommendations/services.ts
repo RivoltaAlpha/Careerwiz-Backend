@@ -36,8 +36,6 @@ export async function getStudentRecommendations(id: number) {
     return await db.query.students.findMany({
         where: (fields, { eq }) => eq(fields.student_id, id),
         columns: {
-            student_id: true,
-            username: true,
         },
         with: {
             recommendations: {
