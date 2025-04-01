@@ -34,13 +34,14 @@ POST http://localhost:8000/create-career
 Content-Type: application/json
 
   {
-    "career_name": "Data Scientist",
-    "description": "Analyze complex data to extract insights and support decision-making.",
-    "requirements": "Degree in Data Science, Statistics, or Computer Science",
-    "subjects": "Mathematics, Statistics, Computer Studies",
-    "interests": "Data Analysis, Machine Learning",
-    "image": "https://thumbs.dreamstime.com/z/career-concept-technology-light-background-blurred-abstract-168248861.jpg"
+    "career_name": "Bachelor of Broadcast Journalism",
+    "description": "Trains students in news reporting, media production, and digital broadcasting techniques.",
+    "requirements": "Bachelor's in Broadcast Journalism",
+    "subjects": "English, Kiswahili, Mathematics, Computer Studies, History and Government",
+    "interests": "Communication, Media literacy, Research skills, Technology proficiency",
+    "image": "https://example.com/broadcast-journalism.jpg"
   }
+
 
 ###
 GET  http://localhost:8000/all-careers
