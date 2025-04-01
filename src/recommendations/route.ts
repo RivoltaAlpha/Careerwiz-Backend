@@ -10,3 +10,4 @@ recommendationsRouter.put('/update-recommendation/:id', updateRecommendations);
 recommendationsRouter.delete('/delete-recommendation/:id', deleteRecommendations);
 recommendationsRouter.get('/get-student-recommendations/:id', getStudentsRecommendations);
 recommendationsRouter.get('/get-recommendation-attributes/:id', getStudentsRecommendationsAttributes);
+
