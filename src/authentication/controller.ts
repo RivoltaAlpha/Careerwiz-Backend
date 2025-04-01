@@ -21,7 +21,7 @@ export const registerUser = async (c: Context) => {
       throw new Error("Email field is missing in the user data");
     }
 
-    const subject = "Welcome to Code World! A world of developers for developers";
+    const subject = "Welcome to Career Wiz";
     const html = `
     <html>
       <head>
@@ -50,10 +50,11 @@ export const registerUser = async (c: Context) => {
         <div class="email-container">
           <p>Hello, ${user.username}</p>
           <p>Welcome to Career Wiz</p>
-          <p>Your ultimate career guide</p>
+          <p>oin us and start exploring different Careers available for you, today!
+An easier way to identify what career suits you most based on what you love!</p>
 
-          <img src="https://wallpapercave.com/wp/wp2038248.jpg" alt="Image" style="max-width: 100%; height: auto;">
-          <a class="btn" href="https://restaurantsapi1.azurewebsites.net/api">Visit our Website</a>
+          <img src="https://img.freepik.com/free-photo/couple-planning-redecorating-house-using-laptop_23-2148814337.jpg?uid=R154664640&semt=ais_hybrid" alt="Image" style="max-width: 100%; height: auto;">
+          <a class="btn" href="https://careerwiz-frontend.vercel.app/">Visit our Website</a>
         </div>
       </body>
     </html>
