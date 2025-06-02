@@ -33,8 +33,7 @@ const customTimeoutException = () =>
   new HTTPException(408, {
     message: `Request timeout after waiting for more than 10 seconds`,
   });
-app.use("/", timeout(100000, customTimeoutException)); //sets a timeout of 10 seconds for all requests
-
+app.use("/", timeout(100000, customTimeoutException)); 
 
 app.get('/', (c) => {
   return c.text('Hello Hono!')
@@ -62,8 +61,6 @@ app.route("/", recommendationsRouter);
 app.route("/", careerInterestsRouter);
 app.route("/", personalIntrestsRouter);
 app.route("/", academicsRouter);
-// app.route("/", subjectsRouter);
-
 
 const port = 3000
 console.log(`Server is running on http://localhost:${port}`)
