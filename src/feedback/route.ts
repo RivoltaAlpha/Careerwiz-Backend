@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listFeedback, getFeedback, deleteFeedback, createFeedback, updateFeedback, getStudentsFeedback } from "./controller";
+import { listFeedback, getFeedback, deleteFeedback, createFeedback, updateFeedback, getStudentsFeedback } from "./controller.js";
 
 export const feedbackRouter = new Hono();
 

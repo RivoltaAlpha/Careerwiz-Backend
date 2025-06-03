@@ -8,15 +8,14 @@ import { trimTrailingSlash } from "hono/trailing-slash";
 import { timeout } from "hono/timeout";
 import { HTTPException } from "hono/http-exception";
 import "dotenv/config"
-import { careersRouter } from './careers/route';
-import { feedbackRouter } from './feedback/route';
-import { recommendationsRouter } from './recommendations/route';
-import { studentRouter } from './students/route';
-import { authRouter } from './authentication/routing';
-import { careerInterestsRouter } from './career_intrests/route';
-import { personalIntrestsRouter } from './personal_intrests/route';
-import { academicsRouter } from './academics/route';
-// import { subjectsRouter } from './subjects/route';
+import { careersRouter } from './careers/route.js';
+import { feedbackRouter } from './feedback/route.js';
+import { recommendationsRouter } from './recommendations/route.js';
+import { studentRouter } from './students/route.js';
+import { authRouter } from './authentication/routing.js';
+import { careerInterestsRouter } from './career_intrests/route.js';
+import { personalIntrestsRouter } from './personal_intrests/route.js';
+import { academicsRouter } from './academics/route.js';
 
 const app = new Hono()
 

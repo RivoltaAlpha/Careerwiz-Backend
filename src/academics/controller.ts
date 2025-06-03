@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { getAcademicById, createAcademicService,updateAcademicService,deleteAcademicService,AllAcademicsService, getStudentAcademics, getAcademicHistory} from "./services";
+import { getAcademicById, createAcademicService,updateAcademicService,deleteAcademicService,AllAcademicsService, getStudentAcademics, getAcademicHistory} from "./services.js";
 
 export const listAcademics = async (c: Context) => {
     try {

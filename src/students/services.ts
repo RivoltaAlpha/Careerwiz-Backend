@@ -1,6 +1,6 @@
-import db from "../drizzle/db";
+import db from "../drizzle/db.js";
 import { eq } from "drizzle-orm";
-import {TIstudents,students,TSstudents,} from "../drizzle/schema";
+import {TIstudents,students,TSstudents,} from "../drizzle/schema.js";
 
 export const studentsService = async (
   limit?: number

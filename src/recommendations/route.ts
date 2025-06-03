@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listRecommendations,deleteRecommendations, getRecommendations, createRecommendations, updateRecommendations, getStudentsRecommendations, getStudentsRecommendationsAttributes } from "./controller";
+import { listRecommendations,deleteRecommendations, getRecommendations, createRecommendations, updateRecommendations, getStudentsRecommendations, getStudentsRecommendationsAttributes } from "./controller.js";
 
 export const recommendationsRouter = new Hono();
 

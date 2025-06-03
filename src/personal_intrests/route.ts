@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import {listPersonalIntrests, updatePersonalIntrest, createPersonalIntrest, deletePersonalIntrest,getPersonalIntrest,getStudentIntrests } from "./controller"
+import {listPersonalIntrests, updatePersonalIntrest, createPersonalIntrest, deletePersonalIntrest,getPersonalIntrest,getStudentIntrests } from "./controller.js"
 
 export const personalIntrestsRouter = new Hono();
 

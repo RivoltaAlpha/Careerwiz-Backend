@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { getCareerById, createCareerService,updateCareerService,deleteCareerService,AllCareersService,} from "./services";
+import { getCareerById, createCareerService,updateCareerService,deleteCareerService,AllCareersService,} from "./services.js";
 
 export const listCareers = async (c: Context) => {
     try {

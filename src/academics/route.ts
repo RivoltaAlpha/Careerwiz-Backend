@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listAcademics, getAcademic,getStudentsAcademics, createAcademic, updateAcademic, deleteAcademic, getAcademicHistories } from "./controller";
+import { listAcademics, getAcademic,getStudentsAcademics, createAcademic, updateAcademic, deleteAcademic, getAcademicHistories } from "./controller.js";
 
 export const academicsRouter = new Hono();
 

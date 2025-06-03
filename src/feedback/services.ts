@@ -1,6 +1,6 @@
-import db from "../drizzle/db";
+import db from "../drizzle/db.js";
 import { eq } from "drizzle-orm";
-import {TIFeedback,feedback,TSFeedback,} from "../drizzle/schema";
+import {TIFeedback,feedback,TSFeedback,} from "../drizzle/schema.js";
 
 
 export const AllfeedbackService = async ( limit?: number): Promise<TSFeedback[] | null> => {

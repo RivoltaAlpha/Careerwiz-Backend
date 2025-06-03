@@ -1,9 +1,9 @@
 import { Context } from "hono";
 import "dotenv/config";
-import { RegisteringService, loginAuthService } from "./service";
+import { RegisteringService, loginAuthService } from "./service.js";
 import {hash, compare } from "bcrypt";
 import { sign, verify } from "hono/jwt";
-import { sendWelcomeEmail } from "../emailing/email";
+import { sendWelcomeEmail } from "../emailing/email.js";
 
 export const registerUser = async (c: Context) => {
   try {

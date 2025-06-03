@@ -1,7 +1,7 @@
 import { Hono } from "hono";
-import { getStudent,createStudent,updateStudent,deleteStudent,listStudents } from "./controller";
+import { getStudent,createStudent,updateStudent,deleteStudent,listStudents } from "./controller.js";
 import { zValidator } from "@hono/zod-validator";
-import { StudentSchema } from "../validator";
+import { StudentSchema } from "../validator.js";
 
 
 export const studentRouter = new Hono();

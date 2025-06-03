@@ -1,6 +1,6 @@
-import db from "../drizzle/db";
+import db from "../drizzle/db.js";
 import { eq } from "drizzle-orm";
-import { TIpersonalIntrests, personalIntrests, TSpersonalIntrests } from "../drizzle/schema";
+import { TIpersonalIntrests, personalIntrests, TSpersonalIntrests } from "../drizzle/schema.js";
 
 export const AllPersonalIntrestsService = async (limit?: number): Promise<TSpersonalIntrests[] | null> => {
     if (limit) {

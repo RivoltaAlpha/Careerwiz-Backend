@@ -1,5 +1,5 @@
 import {Context} from "hono";
-import { getFeedbackById, createFeedbackService,updateFeedbackService,deleteFeedbackService,AllfeedbackService,getStudentFeedback} from "./services";
+import { getFeedbackById, createFeedbackService,updateFeedbackService,deleteFeedbackService,AllfeedbackService,getStudentFeedback} from "./services.js";
 import { error } from "console";
 
 export const listFeedback = async (c: Context) => {

@@ -1,6 +1,6 @@
-import db from "../drizzle/db";
+import db from "../drizzle/db.js";
 import { eq } from "drizzle-orm";
-import { TIRecommendations,TSRecommendations, recommendations } from "../drizzle/schema";
+import { TIRecommendations,TSRecommendations, recommendations } from "../drizzle/schema.js";
 
 
 export const AllRecommendationsService = async ( limit?: number): Promise<TSRecommendations[] | null> => {

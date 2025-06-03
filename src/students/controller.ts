@@ -1,6 +1,6 @@
 import { Context } from "hono";
 import { hash } from 'bcrypt';
-import { getStudentById, createStudentService,updateStudentService,deleteStudentService,studentsService,} from "./services";
+import { getStudentById, createStudentService,updateStudentService,deleteStudentService,studentsService,} from "./services.js";
 
 export const listStudents = async (c: Context) => {
   try {

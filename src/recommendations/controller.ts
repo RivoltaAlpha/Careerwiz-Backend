@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { getRecommendationsById, createRecommendationsService,updateRecommendationsService,deleteRecommendationsService,AllRecommendationsService,getStudentRecommendations, getStudentRecommendationAttributes} from "./services";
+import { getRecommendationsById, createRecommendationsService,updateRecommendationsService,deleteRecommendationsService,AllRecommendationsService,getStudentRecommendations, getStudentRecommendationAttributes} from "./services.js";
 
 export const listRecommendations = async (c: Context) => {
     try {

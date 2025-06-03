@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listCareerInterests, getCareerInterest, getingStudentCareerInterests, createCareerInterest, updateCareerInterest, deleteCareerInterest } from "./controller";
+import { listCareerInterests, getCareerInterest, getingStudentCareerInterests, createCareerInterest, updateCareerInterest, deleteCareerInterest } from "./controller.js";
 
 export const careerInterestsRouter = new Hono();
 

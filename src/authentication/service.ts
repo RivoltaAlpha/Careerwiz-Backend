@@ -1,6 +1,6 @@
-import  db  from '../drizzle/db';
+import  db  from '../drizzle/db.js';
 import { eq, sql} from 'drizzle-orm';
-import {  students, TSstudents, TIstudents } from "../drizzle/schema";
+import {  students, TSstudents, TIstudents } from "../drizzle/schema.js";
 import { hash } from 'bcrypt';
 
 export const loginAuthService = async (user:TSstudents ) => {

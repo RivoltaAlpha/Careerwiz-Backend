@@ -1,6 +1,6 @@
-import db from "../drizzle/db";
+import db from "../drizzle/db.js";
 import { eq } from "drizzle-orm";
-import { TIacademics, academics, TSacademics } from "../drizzle/schema";
+import { TIacademics, academics, TSacademics } from "../drizzle/schema.js";
 
 
 export const AllAcademicsService = async (limit?: number): Promise<TSacademics[] | null> => {
